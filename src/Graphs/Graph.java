@@ -1,33 +1,12 @@
+package Graphs;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-public class GraphTraversal {
-    public static void dfs() {
-        Graph g = new Graph(4);
-        g.addEdge(0, 1);
-        g.addEdge(0, 2);
-        g.addEdge(1, 2);
-        g.addEdge(2, 0);
-        g.addEdge(2, 3);
-        g.addEdge(3, 3);
-        System.out.println("Following is Depth First Traversal " + "(starting from vertex 2)");
-        g.DFS(2);
-    }
-
-    public static void bfs() {
-        Graph G = new Graph(4);
-        G.addEdge(0, 1);
-        G.addEdge(0, 2);
-        G.addEdge(1, 2);
-        G.addEdge(2, 0);
-        G.addEdge(2, 3);
-        G.addEdge(3, 3);
-        System.out.println("Following is Breadth First Traversal " + "(starting from vertex 2)");
-        G.BFS(2);
-    }
-}
-
-class Graph {
+/**
+ * Created by techmint on 12/30/16.
+ */
+public class Graph {
     private int vertices;
     ArrayList<Integer>[] nodes;
 
@@ -77,5 +56,28 @@ class Graph {
                 }
             }
         }
+    }
+
+    boolean isCyclic() {
+        boolean[] dfsAncestors = new boolean[nodes.length];
+        boolean[] visited = new boolean[nodes.length];
+        for (int i = 0; i < vertices; i++) {
+            if (isCyclicUtil(i, dfsAncestors, visited))
+                return true;
+        }
+        return false;
+    }
+
+    boolean isCyclicUtil(int node, boolean[] dfsAncestors, boolean[] visited) {
+        if (visited[node] == false) {
+            visited[node] = true;
+            dfsAncestors[node] = true;
+            for (int n : nodes[node]) {
+                if (n == node || dfsAncestors[n] || (visited[n] == false && isCyclicUtil(n, dfsAncestors, visited)))
+                    return true;
+            }
+        }
+        dfsAncestors[node] = false;
+        return false;
     }
 }
