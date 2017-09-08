@@ -1,3 +1,7 @@
+import Sorting.HeapSort;
+import Sorting.InsertionSort;
+import Sorting.MergeSort;
+import Sorting.QuickSort;
 import Trees.*;
 import Graphs.*;
 
@@ -6,8 +10,7 @@ import Graphs.*;
  */
 public class Runner {
     public static void main(String[] args) {
-        treeNode root = createTree();
-        CheckIfGivenTreeIsBSTOrNot.check(root);
+        QuickSort.Solution();
     }
 
     static treeNode createTree() {

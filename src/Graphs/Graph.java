@@ -12,8 +12,8 @@ public class Graph {
 
     Graph(int v) {
         vertices = v;
-        nodes = new ArrayList[v];
-        for (int i = 0; i < v; i++) {
+        nodes = new ArrayList[vertices];
+        for (int i = 0; i < vertices; i++) {
             nodes[i] = new ArrayList();
         }
     }
@@ -69,11 +69,16 @@ public class Graph {
     }
 
     boolean isCyclicUtil(int node, boolean[] dfsAncestors, boolean[] visited) {
-        if (visited[node] == false) {
+        if (visited[node]) {
+            if (dfsAncestors[node])
+                return true;
+            else
+                return false;
+        } else {
             visited[node] = true;
             dfsAncestors[node] = true;
             for (int n : nodes[node]) {
-                if (n == node || dfsAncestors[n] || (visited[n] == false && isCyclicUtil(n, dfsAncestors, visited)))
+                if (n == node || (visited[n] && dfsAncestors[n]) || (visited[n] == false && isCyclicUtil(n, dfsAncestors, visited)))
                     return true;
             }
         }
