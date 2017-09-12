@@ -1,16 +1,13 @@
-import Sorting.HeapSort;
-import Sorting.InsertionSort;
-import Sorting.MergeSort;
-import Sorting.QuickSort;
+import Basics.Stack.InfixToPostficConversionUsingStack;
 import Trees.*;
-import Graphs.*;
 
 /**
  * Created by techmint on 12/30/16.
  */
 public class Runner {
     public static void main(String[] args) {
-        QuickSort.Solution();
+
+        InfixToPostficConversionUsingStack.solution();
     }
 
     static treeNode createTree() {
