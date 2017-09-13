@@ -1,13 +1,13 @@
-import Basics.Stack.InfixToPostficConversionUsingStack;
+import Basics.Stack.*;
 import Trees.*;
+import javafx.scene.paint.Stop;
 
 /**
  * Created by techmint on 12/30/16.
  */
 public class Runner {
     public static void main(String[] args) {
-
-        InfixToPostficConversionUsingStack.solution();
+        ImplementStackUsingQueues.solution();
     }
 
     static treeNode createTree() {
